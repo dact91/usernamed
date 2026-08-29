@@ -5,8 +5,8 @@ usernamed.py — extensive username permutation generator for engagements.
 A drop-in replacement for username-anarchy: reads a list of names (one per
 line, "First [Middle] Last" or "Last, First [Middle]") and streams out
 usernames across a wide set of corporate naming conventions, including
-several username-anarchy's stock plugins don't cover (first.l, l.f, FLast,
-mixed-case forms, nickname expansion, etc.)
+several username-anarchy's stock plugins don't cover (first.l, l.f, f_last,
+FLast, mixed-case forms, nickname expansion, etc.)
 
 Usage:
     ./usernamed.py -i Team.txt -o users.txt
@@ -70,6 +70,8 @@ FORMATS = {
     "last.f":           (lambda f, m, l: f"{l}.{fi(f)}",                 "smith.j"),
     "flast":            (lambda f, m, l: f"{fi(f)}{l}",                  "jsmith"),
     "lastf":            (lambda f, m, l: f"{l}{fi(f)}",                  "smithj"),
+    "f_last":           (lambda f, m, l: f"{fi(f)}_{l}",                 "j_smith"),
+    "last_f":           (lambda f, m, l: f"{l}_{fi(f)}",                 "smith_j"),
 
     # Full name + initial (the pair username-anarchy is missing)
     "first.l":          (lambda f, m, l: f"{f}.{fi(l)}",                 "john.s"),
